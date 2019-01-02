@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Catapult</title>
+    <link rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <h1>Catapult Wallet Dashboard</h1>
+    <div class="container">
+        <fieldset>
+            <h3>Account Info</h3>
+            <label for="address">Address:
+                <%= walletInfo[0].address %> </label><br />
+            <label for="publicKey">PublicKey:
+                <%= walletInfo[0].publicKey %></label><br />
+            <label for="mosaic">mosaic:
+                <%= walletInfo[0].mosaics %></label>
+        </fieldset>
+        <fieldset>
+            <h3>Transaction (latest 10 Transaction)</h3>
+            <% for(var i=0; i<walletInfo[0].tx.length; i++) { %>
+            <div style="
+            padding: 5px;
+            margin: 5px;
+        ">
+                <label for="FromAddress">FromAddress:
+                    <%= walletInfo[0].tx[i].signer.address.plain() %> </label><br />
+                <label for="ToAddress">ToAddress:
+                    <%= walletInfo[0].tx[i].recipient.address %> </label><br />
+                <a target="_" href='<%= walletInfo[0].nodeExplorer %>#/transfer/<%= walletInfo[0].tx[i].transactionInfo.id %>'>
+                    Tx:
+                    <%= walletInfo[0].tx[i].transactionInfo.hash %>
+                </a>
+            </div>
+            <% } %>
+        </fieldset>
+        <fieldset>
+            <h3>Send Transaction</h3>
+            <form action="/catapult/sendTransaction" method="post">
+                <input name="message" type="text" placeholder="Message">
+                <input name="xem" type="number" placeholder="xem">
+                <input name="recipientAddress" type="text" placeholder="recipient Address" required>
+                <input type="submit" value="Send Transaction">
+            </form>
+        </fieldset>
+    </div>
+</body>
+
+</html>

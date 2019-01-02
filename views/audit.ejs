@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Apostille</title>
+    <link rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <h1>Apostille Demo</h1>
+    <a href="/apostille/">Create</a>
+    <a href="/apostille/audit">Audit</a>
+    <a href="/apostille/download">Download</a>
+    <h3>Audit Apostille</h3>
+    <div class="container">
+        <fieldset>
+            <form action="/apostille/audit" method="post" enctype="multipart/form-data">
+                <input name="apostilleFile" type="file" placeholder="file" required>
+                <input type="submit" value="Audit">
+            </form>
+        </fieldset>
+    </div>
+</body>
+
+</html>
